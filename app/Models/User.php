@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Wallet;
+use App\Models\Deposit;
+use App\Models\Admin;
+
 
 class User extends Authenticatable
 {
@@ -45,5 +48,17 @@ class User extends Authenticatable
 
     public function wallet(){
         return $this->hasOne(Wallet::class);
+    }
+
+    public function deposits(){
+        return $this->hasMany(Deposit::class);
+    }
+
+    public function admin(){
+        return $this->hasOne(Admin::class);
+    }
+
+    public function isAdmin(){
+        return $this->admin()->first() ? true : false;
     }
 }

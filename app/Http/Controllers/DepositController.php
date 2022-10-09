@@ -39,6 +39,7 @@ class DepositController extends Controller
                 "amount" => $transaction->data->amount,
                 "txnref" => $transaction->data->reference,
                 "wallet_id" => auth()->user()->wallet->id,
+                "user_id" => auth()->user()->id,
             ]);
     
             if($request->wantsJson()){

@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('deposits', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('wallet_id');
-            $table->foreignId('user_id');
-            $table->decimal('amount', 20,2)->default(0);
-            $table->string('txnref')->unique();
+            $table->foreignId('user_id')->unique();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deposits');
+        Schema::dropIfExists('admins');
     }
 };
